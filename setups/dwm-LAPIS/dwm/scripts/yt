@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+
+#        _   
+#  _   _| |_ 
+# | | | | __|
+# | |_| | |_ 
+#  \__, |\__|
+#  |___/     
+
+
+# Take search input from the user from rofi
+search="$(rofi -dmenu)"
+
+# Scrape json contents from youtube-dl 
+json="$(youtube-dl -j "ytsearch15:$search" --flat-playlist)"
+
+# Cut the json content and show the titles to user and let him choose from rofi
+choice="$(echo "$json" | jq -r .title | awk '{ print NR,$0 }' | rofi -dmenu | sed 's/\s.*//')"
+
+# Store the url of the Video in $url variable
+url="$(echo "$json" | jq -r .url | head -n "$choice" | tail -n 1)"
+
+# Ask the user for the type of stream
+
+typeofstream="$(printf "1. Video\n2. Audio" | rofi -dmenu | cut -d. -f1)"
+
+case $typeofstream in
+
+	1)  
+		mpv "https://youtu.be/$url" --ytdl-format=bestvideo --force-window=immediate
+		;;
+	2)  
+		mpv "https://youtu.be/$url" --no-video --force-window=immediate
+		;;
+	esac
