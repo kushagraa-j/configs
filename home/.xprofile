@@ -1,0 +1,6 @@
+picom -f &
+slstatus &
+nitrogen --restore &
+xbacklight -set 50 &
+sxhkd ~/.config/sxhkd/sxhkdrc &
+xset r rate 500 40 &
