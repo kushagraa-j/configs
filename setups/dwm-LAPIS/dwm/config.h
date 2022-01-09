@@ -4,14 +4,14 @@
 
 
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
-static const unsigned int gappx     = 3;        /* gaps between windows */
+static const unsigned int gappx     = 2;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 
-static const char *fonts[]          = { "googlesans:size=9.1" };
-static const char dmenufont[]       = "googlesans:size=9.1";
+static const char *fonts[]          = { "opensans:size=9" };
+static const char dmenufont[]       = "opensans:size=9";
 
 static const char col_gray1[]       = "#222831";
 static const char col_gray2[]       = "#444444";
@@ -30,7 +30,7 @@ static const char *colors[][3]      = {
 
 /* TAGGING */
 
-static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+static const char *tags[] = { "1", "2", "3", "4", "5" ,"6", "7", "8", "9" };
 
 static const Rule rules[] = {
 
@@ -50,12 +50,15 @@ static const Rule rules[] = {
 	{"cmus",            NULL,      NULL,          1 << 2,       0,          -1},
 
 	/* Tag 5 : Study/Meeting */
-	{"Microsoft Teams - Preview",  NULL,       NULL,          1 << 4,     0,          -1},
+	{"Microsoft Teams - Insiders",  NULL,       NULL,          1 << 4,     0,          -1},
 	{"zoom",                        NULL,       NULL,          1 << 4,     0,          -1},
 
 	/* Tag 6 : System */
 	{"Qemu",                        NULL,       NULL,          1 << 5,     0,          -1},
 	{"Nitrogen",                    NULL,       NULL,          1 << 5,     0,          -1},
+
+	/* Tag 8 : Media */
+	{"mpv",                        NULL,       NULL,          1 << 7,     0,          -1},
 
 	/* Tag 9 : GFX */
 	{"Gimp",            NULL,      NULL,          1 << 8,       0,          -1},
@@ -67,7 +70,7 @@ static const Rule rules[] = {
 
 static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
-static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
+static const int resizehints = 0;    /* 1 means respect size hints in tiled resizals */
 static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
 
 static const Layout layouts[] = {
@@ -85,8 +88,6 @@ static const Layout layouts[] = {
 	{ MODKEY|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, \
 	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
 
-/* helper for spawning shell commands in the pre dwm-5.0 fashion */
-#define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
 /* COMMANDS */
 
@@ -95,21 +96,8 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char *termcmd[]  = { "st", NULL };
 
 static const char *ytcmd[]  = { "yt", NULL };
-
-static const char *mutecmd[] = { "pactl", "set-sink-mute", "0", "toggle", NULL };
-static const char *volupcmd[] = { "pactl", "set-sink-volume", "0", "+5%", NULL };
-static const char *voldowncmd[] = { "pactl", "set-sink-volume", "0", "-5%", NULL };
-
-static const char *brupcmd[] = { "xbacklight", "-inc", "10", NULL };
-static const char *brdowncmd[] = { "xbacklight", "-dec", "10", NULL };
-
-static const char *nextcmd[] = { "playerctl", "next", NULL };
-static const char *prevcmd[] = { "playerctl", "previous", NULL };
-static const char *playcmd[] = { "playerctl", "play-pause", NULL };
 static const char *volcmd[] = { "pavucontrol", NULL };
-
 static const char *lock[] = {"betterlockscreen" , "-l" , NULL };
-
 static const char *vm[] = {"vm" , NULL };
 
 
@@ -154,14 +142,6 @@ static Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
-	{ 0, XF86XK_AudioMute, spawn, {.v = mutecmd } },
-	{ 0, XF86XK_AudioLowerVolume, spawn, {.v = voldowncmd } },
-	{ 0, XF86XK_AudioRaiseVolume, spawn, {.v = volupcmd } },
-	{ 0, XF86XK_MonBrightnessUp, spawn, {.v = brupcmd} },
-	{ 0, XF86XK_MonBrightnessDown, spawn, {.v = brdowncmd} },
-	{ 0, XF86XK_AudioNext, spawn, {.v = nextcmd} },
-	{ 0, XF86XK_AudioPrev, spawn, {.v = prevcmd} },
-	{ 0, XF86XK_AudioPlay, spawn, {.v = playcmd} },
 };
 
 
