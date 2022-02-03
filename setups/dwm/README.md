@@ -47,6 +47,8 @@ Currently my setups only support 2 themes, will add more soon.
 ![](img/screenshot/2022-01-09_17-17.png) <br>
 ![](img/screenshot/2022-01-09_17-13.png)
 
+> NOTE: Use respective theme wallpaper from `img/wallappers` until i create a install script
+
 # How to use themes?
 
 There is a `#include "themes/theme.h>` line 
