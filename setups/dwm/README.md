@@ -24,14 +24,15 @@ Do this in each directory.
 
 # Keybinds
 
-```
-mod4 + shift + enter -> Terminal
-mod4 + shift + d     -> Dmenu
-mod4 + q -> kill client
-mod4 + j,k -> change focus
-mod4 + h,l -> increase/decrease window size
-mod4 + <space> -> change layout
-```
+|    Keybind           |          Action                     |
+|:---                  |:---				     |
+| mod4 + shift + enter | Terminal                            |
+| mod4 + shift + d     | Dmenu                               |
+| mod4 + q             | Kill client                         |
+| mod4 + j,k           | Change focus                        |
+| mod4 + h,l           | Increase/decrease window size       |
+| mod4 + <space>       | Change layout                       |
+                                                             
 check the source code for more!
 
 # Themes
@@ -39,8 +40,8 @@ check the source code for more!
 Currently my setups only support 2 themes, will add more soon.
 
 ## CHERRYOC (DEFAULT)
-![](img/screenshot/20220201-170113.png)
 ![](img/screenshot/20220201-181658.png)
+![](img/screenshot/20220201-170113.png)
 
 ## LAPIS
 ![](img/screenshot/2022-01-09_17-17.png) <br>
@@ -49,7 +50,6 @@ Currently my setups only support 2 themes, will add more soon.
 # How to use themes?
 
 There is a `#include "themes/theme.h>` line 
-in config of each build at the top.
+in config of each build at the top. To use Lapis, use:
 
-To use Lapis, use:
-`#include "themes/lapis.h"
+`#include "themes/lapis.h"`
