@@ -31,7 +31,7 @@ Do this in each directory.
 | mod4 + q             | Kill client                         |
 | mod4 + j,k           | Change focus                        |
 | mod4 + h,l           | Increase/decrease window size       |
-| mod4 + <space>       | Change layout                       |
+| mod4 + space         | Change layout                       |
                                                              
 check the source code for more!
 
